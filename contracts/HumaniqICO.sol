@@ -1,28 +1,27 @@
 pragma solidity ^0.4.6;
 
-import "./HumaniqToken.sol";
+import "./ShillverToken.sol";
 import "./SafeMath.sol";
 
-/// @title HumaniqICO contract - Takes funds from users and issues tokens.
-/// @author Evgeny Yurtaev - <evgeny@etherionlab.com>
-/// @author Alexey Bashlykov - <alexey@etherionlab.com>
-contract HumaniqICO is SafeMath {
+/// @title ShillverICO contract - Takes funds from users and issues tokens.
+/// @author Aboylal
+contract ShillverICO is SafeMath {
 
     /*
      * External contracts
      */
-    HumaniqToken public humaniqToken;
+    ShillverToken public shillverToken;
 
-    // Address of the founder of Humaniq.
-    address public founder = 0xc890b1f532e674977dfdb791cafaee898dfa9671;
+    // Address of the founder of Shillver - Kovan address - remove later
+    address public founder = 0x028588Bc21B94738027d5B4565a741B620e9481D;
 
-    // Address where all tokens created during ICO stage initially allocated
-    address public allocationAddress = 0x1111111111111111111111111111111111111111;
+    // Address where all tokens created during ICO stage initially allocated - my second kovan account
+    address public allocationAddress = 0x22Bf6f44aeB43a6c6f71D7A721B22E1a0F9657B9;
 
-    // Start date of the ICO
+    // Start date of the ICO - change
     uint public startDate = 1491433200;  // 2017-04-05 23:00:00 UTC
 
-    // End date of the ICO
+    // End date of the ICO - change
     uint public endDate = 1493247600;  // 2017-04-26 23:00:00 UTC
 
     // Token price without discount during the ICO stage
