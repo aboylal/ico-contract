@@ -1,22 +1,22 @@
 pragma solidity ^0.4.2;
 
-import "./HumaniqToken.sol";
+import "./ShillverToken.sol";
 
-/// @title HumaniqICO contract - Takes funds from users and issues tokens.
-/// @author Evgeny Yurtaev - <evgeny@etherionlab.com>
-contract HumaniqPreICO {
+/// @title ShillverICO contract - Takes funds from users and issues tokens.
+/// @author aboylal
+contract ShillverPreICO {
 
     /*
      * External contracts
      */
-    HumaniqToken public humaniqToken = HumaniqToken(0x0);
+    ShillverToken public shillverToken = ShillverToken(0x0);
 
     /*
      * Crowdfunding parameters
      */
-    uint constant public CROWDFUNDING_PERIOD = 12 days;
-    // Goal threshold, 10000 ETH
-    uint constant public CROWDSALE_TARGET = 10000 ether;
+    uint constant public CROWDFUNDING_PERIOD = 3 days;
+    // Goal threshold, 100 ETH
+    uint constant public CROWDSALE_TARGET = 100 ether;
 
     /*
      *  Storage
@@ -107,7 +107,7 @@ contract HumaniqPreICO {
             // Could not send money
             throw;
         }
-        if (!humaniqToken.issueTokens(msg.sender, tokenCount)) {
+        if (!shillverToken.issueTokens(msg.sender, tokenCount)) {
             // Tokens could not be issued.
             throw;
         }
@@ -129,7 +129,7 @@ contract HumaniqPreICO {
         // Update fund's and user's balance and total supply of tokens.
         icoBalance += investment;
         investments[beneficiary] += investment;
-        if (!humaniqToken.issueTokens(beneficiary, _tokenCount)) {
+        if (!shillverToken.issueTokens(beneficiary, _tokenCount)) {
             // Tokens could not be issued.
             throw;
         }
@@ -145,9 +145,9 @@ contract HumaniqPreICO {
     {
         if (isICOActive == true) {
             isICOActive = false;
-            // Founders receive 14% of all created tokens.
-            uint founderBonus = ((icoBalance / baseTokenPrice) * 114) / 100;
-            if (!humaniqToken.issueTokens(multisig, founderBonus)) {
+            // Founders receive 35% of all created tokens.
+            uint founderBonus = ((icoBalance / baseTokenPrice) * 135) / 100;
+            if (!shillverToken.issueTokens(multisig, founderBonus)) {
                 // Tokens could not be issued.
                 throw;
             }
@@ -179,7 +179,7 @@ contract HumaniqPreICO {
     }
 
     /// @dev Contract constructor function sets founder and multisig addresses.
-    function HumaniqICO(address _multisig) {
+    function ShillverICO(address _multisig) {
         // Set founder address
         founder = msg.sender;
         // Set multisig address
